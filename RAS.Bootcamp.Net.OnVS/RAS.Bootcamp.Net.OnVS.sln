@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RAS.Bootcamp.Net.OnVS", "RAS.Bootcamp.Net.OnVS\RAS.Bootcamp.Net.OnVS.csproj", "{2FA4ED85-B5DD-47E4-91E1-FD163DE5B5B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FA4ED85-B5DD-47E4-91E1-FD163DE5B5B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FA4ED85-B5DD-47E4-91E1-FD163DE5B5B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FA4ED85-B5DD-47E4-91E1-FD163DE5B5B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FA4ED85-B5DD-47E4-91E1-FD163DE5B5B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BBC47C6C-F852-4E49-8FBC-CD7D5A61BDBD}
+	EndGlobalSection
+EndGlobal
