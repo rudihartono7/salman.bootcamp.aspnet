@@ -23,7 +23,7 @@ public class ProductController : Controller
     {
         //TODO
         List<Barang> barangs = _dbContext.Barangs.ToList();
-        
+            
         return View(barangs);
     }
 

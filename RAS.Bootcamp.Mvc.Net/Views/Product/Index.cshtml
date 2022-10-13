@@ -1,30 +1,37 @@
-@using System.Collections;
 
 @model List<RAS.Bootcamp.Mvc.Net.Models.Entities.Barang>
 
-<table>
-    <th>
-            <td>No BARANG</td>
-            <td>KODE BARANG</td>
-            <td>NAMA BARANG</td>
-            <td>HARGA</td>
-            <td>STOK</td>
-        </th>
-    <tbody>
-        @if(Model != null)
-        {
-            foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Kode</td>
-                    <td>@item.Nama</td>
-                    <td>@item.Harga</td>
-                    <td>@item.Stok</td>
-                </tr>   
-            }
-        }else{
-            <h1>Data barang null</h1>
-        }
-    </tbody>
-</table>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>No BARANG</th>
+                        <th>KODE BARANG</th>
+                        <th>NAMA BARANG</th>
+                        <th>HARGA</th>
+                        <th>STOK</th>
+					</tr>
+				</thead>
+				<tbody>
+					@if(Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr class="table-active">
+                                <td>@item.Id</td>
+                                <td>@item.Kode</td>
+                                <td>@item.Nama</td>
+                                <td>@item.Harga</td>
+                                <td>@item.Stok</td>
+                            </tr>   
+                        }
+                    }else{
+                        <h1>Data barang null</h1>
+                    }
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
