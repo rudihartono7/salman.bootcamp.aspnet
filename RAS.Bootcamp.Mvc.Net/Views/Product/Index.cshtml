@@ -1,1 +1,30 @@
-https://localhost:/product/index
+@using System.Collections;
+
+@model List<RAS.Bootcamp.Mvc.Net.Models.Entities.Barang>
+
+<table>
+    <th>
+            <td>No BARANG</td>
+            <td>KODE BARANG</td>
+            <td>NAMA BARANG</td>
+            <td>HARGA</td>
+            <td>STOK</td>
+        </th>
+    <tbody>
+        @if(Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Kode</td>
+                    <td>@item.Nama</td>
+                    <td>@item.Harga</td>
+                    <td>@item.Stok</td>
+                </tr>   
+            }
+        }else{
+            <h1>Data barang null</h1>
+        }
+    </tbody>
+</table>

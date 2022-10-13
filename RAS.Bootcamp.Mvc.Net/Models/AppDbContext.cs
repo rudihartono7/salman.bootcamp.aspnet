@@ -11,4 +11,5 @@ public class AppDbContext: DbContext {
     public DbSet<User> Users { get; set; }
     public DbSet<Penjual> Penjuals { get; set; }
     public DbSet<Barang> Barangs { get; set; }
+    public DbSet<Pembeli> Pembelies { get; set; }
 }

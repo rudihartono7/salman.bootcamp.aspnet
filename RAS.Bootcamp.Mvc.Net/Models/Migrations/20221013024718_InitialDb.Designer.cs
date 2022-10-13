@@ -11,8 +11,8 @@ using RAS.Bootcamp.Mvc.Net.Models;
 namespace RAS.Bootcamp.Mvc.Net.Models.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221012050843_InitialDB")]
-    partial class InitialDB
+    [Migration("20221013024718_InitialDb")]
+    partial class InitialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -58,7 +58,7 @@ namespace RAS.Bootcamp.Mvc.Net.Models.Migrations
 
                     b.HasIndex("IdPenjual");
 
-                    b.ToTable("Barangs");
+                    b.ToTable("Barang");
                 });
 
             modelBuilder.Entity("RAS.Bootcamp.Mvc.Net.Models.Entities.Penjual", b =>

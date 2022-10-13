@@ -8,6 +8,7 @@ public class Barang {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get;set; }
     [StringLength(10)]
+    [Required]
     public string Kode {get;set;}
     [StringLength(100)]
     public string Nama {get ;set;}

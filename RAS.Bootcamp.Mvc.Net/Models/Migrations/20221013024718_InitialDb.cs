@@ -5,7 +5,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace RAS.Bootcamp.Mvc.Net.Models.Migrations
 {
-    public partial class InitialDB : Migration
+    public partial class InitialDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,7 +46,7 @@ namespace RAS.Bootcamp.Mvc.Net.Models.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Barangs",
+                name: "Barang",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -60,9 +60,9 @@ namespace RAS.Bootcamp.Mvc.Net.Models.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Barangs", x => x.Id);
+                    table.PrimaryKey("PK_Barang", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Barangs_Penjuals_IdPenjual",
+                        name: "FK_Barang_Penjuals_IdPenjual",
                         column: x => x.IdPenjual,
                         principalTable: "Penjuals",
                         principalColumn: "Id",
@@ -70,8 +70,8 @@ namespace RAS.Bootcamp.Mvc.Net.Models.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Barangs_IdPenjual",
-                table: "Barangs",
+                name: "IX_Barang_IdPenjual",
+                table: "Barang",
                 column: "IdPenjual");
 
             migrationBuilder.CreateIndex(
@@ -83,7 +83,7 @@ namespace RAS.Bootcamp.Mvc.Net.Models.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Barangs");
+                name: "Barang");
 
             migrationBuilder.DropTable(
                 name: "Penjuals");

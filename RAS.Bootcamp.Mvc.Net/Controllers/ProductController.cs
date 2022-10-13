@@ -1,22 +1,30 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using RAS.Bootcamp.Mvc.Net.Models;
+using RAS.Bootcamp.Mvc.Net.Models.Entities;
 
 namespace RAS.Bootcamp.Mvc.Net.Controllers;
 
-public class HomeController : Controller
+public class ProductController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<ProductController> _logger;
+    private readonly AppDbContext _dbContext;
 
-    public HomeController(ILogger<HomeController> logger)
+    public ProductController(ILogger<ProductController> logger, AppDbContext dbContext)
     {
+        _dbContext = dbContext;
+        //deklasi dulu connection nya
+        //connect()
+        //query
         _logger = logger;
     }
 
     public IActionResult Index()
     {
         //TODO
-        return View();
+        List<Barang> barangs = _dbContext.Barangs.ToList();
+        
+        return View(barangs);
     }
 
     public IActionResult Privacy()
