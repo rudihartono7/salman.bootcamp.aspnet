@@ -26,7 +26,11 @@ public class ProductController : Controller
             
         return View(barangs);
     }
-
+    [HttpPost]
+    public IActionResult Create(Barang newBarang){
+        
+        return View();
+    }
     public IActionResult Privacy()
     {
         return View();
