@@ -64,6 +64,6 @@ public class ProductController : Controller {
         };
         _dbContext.Barangs.Add(barang);
         _dbContext.SaveChanges();
-        return Created("",barang);
+        return Created("", barang);
     }
 }
