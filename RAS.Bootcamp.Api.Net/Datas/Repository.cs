@@ -5,9 +5,11 @@ namespace RAS.Bootcamp.Api.Net.Datas;
 public class Repository<T> : IRepository<T> where T : class
 {
     protected readonly EMarketDbContext DbContext;
-    public Repository(EMarketDbContext dbContext)
+    private readonly IGuidRandom _randomGuid;
+    public Repository(EMarketDbContext dbContext, IGuidRandom randomGuid)
     {
         DbContext = dbContext;
+        _randomGuid = randomGuid;
     }
     public void Add(T newData)
     {
@@ -18,6 +20,10 @@ public class Repository<T> : IRepository<T> where T : class
     public T Get(int id)
     {
         return DbContext.Find<T>(id);
+    }
+
+    public Guid GetRandom(){
+        return _randomGuid.GetRandomString();
     }
 
     public IEnumerable<T> GetList()

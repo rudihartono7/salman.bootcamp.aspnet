@@ -26,7 +26,6 @@ public class PembeliController : Controller {
     public IActionResult Detail(int id)
     {
         var detail = _repoPembeli.Get(id);
-
         return Json(detail);
     }
 

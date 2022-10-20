@@ -15,6 +15,7 @@ public class ProductController : Controller {
     {
         _dbContext = dbContext;
     }
+
     [HttpGet]
     public IActionResult Product(){
         var products = _dbContext.Barangs.ToList();

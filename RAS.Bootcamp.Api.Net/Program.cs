@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using RAS.Bootcamp.Api.Net;
 using RAS.Bootcamp.Api.Net.Datas;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,12 @@ builder.Services.AddDbContext<EMarketDbContext>(options =>{
 });
 
 builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+
+//builder.Services.AddSingleton<IGuidRandom, GuidRandom>();
+
+//builder.Services.AddScoped<IGuidRandom, GuidRandom>();
+
+builder.Services.AddTransient<IGuidRandom, GuidRandom>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
