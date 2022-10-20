@@ -17,6 +17,10 @@ public class Barang {
     public int Stok { get; set; }
     [ForeignKey("Penjual")]
     public int IdPenjual { get; set;}
+    [StringLength(250)]
+    public string Filename {get;set;}
+    [StringLength(250)]
+    public string Url {get;set;}
 
     public virtual Penjual Penjual { get; set; }
 }
