@@ -26,10 +26,49 @@ public class ProductController : Controller
             
         return View(barangs);
     }
-    [HttpPost]
-    public IActionResult Create(Barang newBarang){
+
+    [HttpGet]
+    public IActionResult Create()
+    {
         
         return View();
+    }
+
+    [HttpPost]
+    public IActionResult Create(BarangRequest newBarang)
+    {
+        
+        var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+
+        if(!Directory.Exists(uploadFolder))
+            Directory.CreateDirectory(uploadFolder);
+
+        var filename = $"{newBarang.Kode}-{newBarang.FileImage.FileName}";
+        var filePath = Path.Combine(uploadFolder,filename);
+        
+        using var stream = System.IO.File.Create(filePath);
+        if(newBarang.FileImage != null)
+        {
+            newBarang.FileImage.CopyTo(stream);
+        }
+
+        var Url = $"{Request.Scheme}://{Request.Host}{Request.PathBase}/images/{filename}"; 
+
+        _dbContext.Barangs.Add(new Barang
+        {
+            Kode = newBarang.Kode,
+            Nama = newBarang.Nama,
+            Harga = newBarang.Harga,
+            Description = newBarang.Description,
+            Filename = filename,
+            Url = Url
+        });
+
+
+
+
+        return View();
+
     }
     public IActionResult Privacy()
     {
