@@ -1,4 +1,11 @@
+using RAS.Bootcamo.Catalog.Mvc.Net.Datas;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddDbContext<EMarketDbContext>(options =>{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
