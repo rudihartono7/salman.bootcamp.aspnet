@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using RAS.Bootcamo.Catalog.Mvc.Net.Datas;
 
 var builder = WebApplication.CreateBuilder(args);
