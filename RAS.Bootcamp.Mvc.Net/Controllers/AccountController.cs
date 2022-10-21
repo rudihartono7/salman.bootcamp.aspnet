@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -24,47 +23,46 @@ public class AccountController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Login(LoginRequest request){
-        
-        if(!ModelState.IsValid)
-        {
+    public async Task<IActionResult> Login(LoginRequest request)
+    {
+        if(!ModelState.IsValid){
             return View(request);
         }
 
-        var user = _dbContext.Users.FirstOrDefault(x=>x.Username == request.Username && x.Password == request.Password);
+        var user = _dbContext.Users
+        .FirstOrDefault(x=>x.Username == request.Username && x.Password == request.Password);
 
         if(user == null){
+            ViewBag.ErrorMessage = "Invalid username or password";
 
-            ViewBag.ErrorMessage = "invalid username or password";
-            
             return View(request);
         }
 
         if(user.Tipe == "PEMBELI"){
-            ViewBag.ErrorMessage = "Cannot access by PEMBELI";
+            ViewBag.ErrorMessage = "You'r not admin or seller";
+
             return View(request);
         }
 
-        //Set Cookie authentication
-        var claims = new List<Claim>{
+        //Set Authorization data to cookies
+        var claims = new List<Claim>
+        {
             new Claim(ClaimTypes.Name, user.Username),
-            new Claim("Fullname", user.Username),
-            new Claim(ClaimTypes.Role, user.Tipe)
+            new Claim("FullName", user.Username),
+            new Claim(ClaimTypes.Role, user.Tipe),
         };
 
         var claimsIdentity = new ClaimsIdentity(
-            claims, CookieAuthenticationDefaults.AuthenticationScheme
-        );
+            claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-        var authProperties = new AuthenticationProperties(){
-            ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(20), 
+        var authProperties = new AuthenticationProperties
+        {
         };
 
         await HttpContext.SignInAsync(
-            CookieAuthenticationDefaults.AuthenticationScheme,
-            new ClaimsPrincipal(claimsIdentity),
-            authProperties
-        );
+            CookieAuthenticationDefaults.AuthenticationScheme, 
+            new ClaimsPrincipal(claimsIdentity), 
+            authProperties);
 
         return RedirectToAction("Index", "Home");
     }

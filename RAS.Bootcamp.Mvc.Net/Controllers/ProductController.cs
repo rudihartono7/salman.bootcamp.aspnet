@@ -6,7 +6,7 @@ using RAS.Bootcamp.Mvc.Net.Models.Entities;
 
 namespace RAS.Bootcamp.Mvc.Net.Controllers;
 
-[Authorize]
+[Authorize(Roles = "PENJUAL")]
 public class ProductController : Controller
 {
     private readonly ILogger<ProductController> _logger;
