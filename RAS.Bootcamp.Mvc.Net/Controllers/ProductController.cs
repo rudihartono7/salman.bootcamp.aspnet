@@ -1,10 +1,12 @@
 ﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RAS.Bootcamp.Mvc.Net.Models;
 using RAS.Bootcamp.Mvc.Net.Models.Entities;
 
 namespace RAS.Bootcamp.Mvc.Net.Controllers;
 
+[Authorize]
 public class ProductController : Controller
 {
     private readonly ILogger<ProductController> _logger;
@@ -27,10 +29,10 @@ public class ProductController : Controller
         return View(barangs);
     }
 
+    [Authorize(Roles = "PENJUAL")]
     [HttpGet]
     public IActionResult Create()
-    {
-        
+    {   
         return View();
     }
 

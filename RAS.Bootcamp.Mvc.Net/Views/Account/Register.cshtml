@@ -1,0 +1,52 @@
+@model RAS.Bootcamp.Mvc.Net.Models.RegisterRequest;
+
+<div class="row">
+    <div class="col-md-12">
+        @if(ViewBag.ErrorMessage != null && ViewBag.ErrorMessage != ""){
+            <div class="alert alert-danger" role="alert">
+                @ViewBag.ErrorMessage
+            </div>
+        }
+        <form role="form" asp-action="Register" method="post">
+            <div class="form-group">
+                <label for="Username">
+                    Username
+                </label>
+                <input type="text" asp-for="Username" class="form-control" id="Username" />
+            </div>
+            <div class="form-group">
+                <label for="Password">
+                    Password
+                </label>
+                <input type="password" class="form-control" asp-for="Password" id="Password" />
+            </div>
+            
+            <div class="form-group">
+                <label for="FullName">
+                    Full Name
+                </label>
+                <input type="text" class="form-control" asp-for="FullName" id="FullName" />
+            </div>
+            <div class="form-group">
+                <label for="Alamat">
+                    Alamat
+                </label>
+                <input type="text" class="form-control" asp-for="Alamat" id="Alamat" />
+            </div>
+            <div class="form-group">
+                <label for="Tipe">
+                    Tipe
+                </label>
+                <select id="Tipe" class="form-control" asp-for="Tipe">
+                    <option value="ADMIN">ADMIN</option>
+                    <option value="PENJUAL">PENJUAL</option>
+                    <option value="PEMBELI">PEMBELI</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">
+                Submit
+            </button>
+        </form>
+    </div>
+</div>
