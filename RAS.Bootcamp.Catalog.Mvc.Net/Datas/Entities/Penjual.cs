@@ -1,4 +1,7 @@
-﻿namespace RAS.Bootcamp.Catalog.Mvc.Net.Datas.Entities
+﻿using System;
+using System.Collections.Generic;
+
+namespace RAS.Bootcamp.Catalog.Mvc.Net.Datas.Entities
 {
     public partial class Penjual
     {
