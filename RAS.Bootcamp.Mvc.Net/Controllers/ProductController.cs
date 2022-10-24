@@ -29,10 +29,10 @@ public class ProductController : Controller
         return View(barangs);
     }
 
+    [Authorize(Roles = "PENJUAL")]
     [HttpGet]
     public IActionResult Create()
-    {
-        
+    {   
         return View();
     }
 

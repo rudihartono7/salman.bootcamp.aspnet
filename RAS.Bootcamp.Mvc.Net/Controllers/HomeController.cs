@@ -20,11 +20,12 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Forbidden(){
+    public IActionResult Privacy()
+    {
         return View();
     }
+    public IActionResult Forbidden(){
 
-    public IActionResult Privacy(){
         return View();
     }
 }
