@@ -25,8 +25,6 @@ jalankan command berikut ini untuk memulai proses scafolding
 
 dotnet ef dbcontext scaffold "Server=localhost; Port=5432; Database=MWorkforceDb; User Id=postgres; Password=root;" Npgsql.EntityFrameworkCore.PostgreSQL --context-dir Datas --output-dir "Datas/Entities" --force
 
-
-
 ## Code First
 Install .net cli dan ef cli
 
