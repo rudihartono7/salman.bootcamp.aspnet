@@ -70,9 +70,40 @@ public class AccountController : Controller
     }
 
     public async Task<IActionResult> Logout(){
+        
         await HttpContext.SignOutAsync();
+        return RedirectToAction("Login");
+    }
+
+    public IActionResult Register(){
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Register(RegisterRequest request){
+        if(!ModelState.IsValid){
+
+            return View(request);
+        }
+
+        var newUser = new Models.Entities.User{
+            Username = request.Username,
+            Password = request.Password,
+            Tipe = request.Tipe
+        };
+
+        var penjual = new Models.Entities.Penjual{
+            IdUser = newUser.Id,
+            Alamat = request.Alamat,
+            NamaToko = $"TK {request.FullName}",
+            User = newUser
+        };
+
+        _dbContext.Users.Add(newUser);
+        _dbContext.Penjuals.Add(penjual);
+        
+        _dbContext.SaveChanges();
 
         return RedirectToAction("Login");
     }
-    
 }
