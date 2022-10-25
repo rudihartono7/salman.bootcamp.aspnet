@@ -79,7 +79,7 @@ public class CartController : Controller
             return BadRequest();
         }
         
-        item.Jumlah += qty;
+        item.Jumlah = qty;
 
         _dbContext.Update(item);
         _dbContext.SaveChanges();
@@ -112,7 +112,7 @@ public class CartController : Controller
         
         _dbContext.Keranjangs.RemoveRange(items);
         _dbContext.SaveChanges();
-        
+
         return RedirectToAction("Index");
     }
 }

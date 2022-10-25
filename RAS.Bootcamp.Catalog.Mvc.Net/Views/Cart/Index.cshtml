@@ -25,8 +25,11 @@
                                 <form asp-action="UpdateCart" asp-controller="Cart" method="post">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <input type="hidden" name="idBarang" value="@item.Id" />
-                                            <input type="number" min="1" class="form-control" name="qty" value="@item.Qty" />
+                                            <input type="hidden" name="idBarang" value="@item.ProductId" />
+                                            <label for="qty">
+                                                Qty
+                                            </label>
+                                            <input type="number" id="qty" min="1" name="qty" value="@item.Qty" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -36,7 +39,7 @@
                                     </div>
                                 </form>
 
-                                <form asp-action="RemoveCart" asp-controller="Cart" method="post">
+                                <form asp-action="RemoveFromCart" asp-controller="Cart" method="post">
                                     <div class="col-md-4">
                                         <input type="hidden" value="@item.Id" name="Id" />
                                         <button type="submit" class="btn btn-danger">
