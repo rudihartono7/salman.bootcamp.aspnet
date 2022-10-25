@@ -9,6 +9,9 @@ namespace RAS.Bootcamp.Catalog.Mvc.Net.Datas.Entities
         public int IdBarang { get; set; }
         public decimal Harga { get; set; }
         public int Jumlah { get; set; }
+        /// <summary>
+        /// Subtotal adalah harga * jumlah
+        /// </summary>
         public decimal SubTotal { get; set; }
         public int IdTransaksi { get; set; }
 

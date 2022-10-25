@@ -1,17 +1,20 @@
 @model List<RAS.Bootcamp.Catalog.Mvc.Net.Models.CartResponse>
 
 <div class="row">
-		<div class="col-md-12">
-            @if(Model == null || !Model.Any()){
-                <h1>Keranjang masih kosong</h1>
-            } else {
-                foreach (var item in Model)
-                {
+    <div class="col-md-12">
+        @if (Model == null || !Model.Any())
+        {
+            <h1>Keranjang masih kosong</h1>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
                 <div class="row">
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-md-8">
-                                <img alt="Bootstrap Image Preview" src="@item.ImageUrl" />
+                                <img alt="Bootstrap Image Preview" src="@item.ImageUrl"/>
                             </div>
                             <div class="col-md-4">
                                 <dl>
@@ -22,44 +25,50 @@
                     </div>
                     <div class="col-md-4">
                         <div class="row">
-                                <form asp-action="UpdateCart" asp-controller="Cart" method="post">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <input type="hidden" name="idBarang" value="@item.ProductId" />
-                                            <label for="qty">
-                                                Qty
-                                            </label>
-                                            <input type="number" id="qty" min="1" name="qty" value="@item.Qty" />
-                                        </div>
+                            <form asp-action="UpdateCart" asp-controller="Cart" method="post">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="hidden" name="idBarang" value="@item.ProductId"/>
+                                        <label for="qty">
+                                            Qty
+                                        </label>
+                                        <input type="number" id="qty" min="1" name="qty" value="@item.Qty"/>
                                     </div>
-                                    <div class="col-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            Update Cart
-                                        </button>
-                                    </div>
-                                </form>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Update Cart
+                                    </button>
+                                </div>
+                            </form>
 
-                                <form asp-action="RemoveFromCart" asp-controller="Cart" method="post">
-                                    <div class="col-md-4">
-                                        <input type="hidden" value="@item.Id" name="Id" />
-                                        <button type="submit" class="btn btn-danger">
-                                            Remove
-                                        </button>
-                                    </div>
-                                </form>
+                            <form asp-action="RemoveFromCart" asp-controller="Cart" method="post">
+                                <div class="col-md-4">
+                                    <input type="hidden" value="@item.Id" name="Id"/>
+                                    <button type="submit" class="btn btn-danger">
+                                        Remove
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-			    </div>       
-                }
-                <div class="row">
-                    <form asp-action="Clear" asp-controller="Cart" method="post">
-                        <div class="col-md-4">
-                            <button type="submit" class="btn btn-danger">
-                                Clear All
-                            </button>
-                        </div>
-                    </form>
                 </div>
             }
-		</div>
-	</div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="Clear" asp-controller="Cart" method="post">
+                        <button type="submit" class="btn btn-danger">
+                            Clear All
+                        </button>
+                    </form>
+                </div>
+                <div class="col-md-8">
+                    <a type="button" class="btn btn-success" href="@Url.Action("Index", "Checkout")">
+                        Checkout
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -22,8 +22,11 @@ public class CartController : Controller
 
     public IActionResult Index()
     {
+        var userId = User.Claims.First(e => e.Type == ClaimTypes.NameIdentifier).Value;
+        var id = int.Parse(userId);
         var result = (from a in _dbContext.Keranjangs 
                       join b in _dbContext.Barangs on a.IdBarang equals b.Id
+                      where a.IdUser == id
                       select new CartResponse {
                           Id = a.Id,
                           ProductId = a.IdBarang,
