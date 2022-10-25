@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RAS.Bootcamp.Api.Net", "RAS.Bootcamp.Api.Net\RAS.Bootcamp.Api.Net.csproj", "{8072A8A1-7C05-4310-AB70-D5149652CCF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RAS.Bootcamp.Catalog.Mvc.Net", "RAS.Bootcamp.Catalog.Mvc.Net\RAS.Bootcamp.Catalog.Mvc.Net.csproj", "{1DCD2892-0F65-4E1E-A576-F1282F3C012F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RAS.Bootcamp.Mvc.Net", "RAS.Bootcamp.Mvc.Net\RAS.Bootcamp.Mvc.Net.csproj", "{D1D67F35-F0D8-4A96-952C-BD005EEC7045}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RAS.Bootcamp.Net", "RAS.Bootcamp.Net\RAS.Bootcamp.Net.csproj", "{C2B2D183-AFD7-4B95-BD25-91702596BFB1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RAS.Bootcamp.Net.OnVS", "RAS.Bootcamp.Net.OnVS", "{9B0CF92E-C49E-48C9-8378-46281FD2C45C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RAS.Bootcamp.Net.OnVS", "RAS.Bootcamp.Net.OnVS\RAS.Bootcamp.Net.OnVS\RAS.Bootcamp.Net.OnVS.csproj", "{5CFA7816-E26F-4088-A1E6-2D3C1D37B2AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8072A8A1-7C05-4310-AB70-D5149652CCF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8072A8A1-7C05-4310-AB70-D5149652CCF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8072A8A1-7C05-4310-AB70-D5149652CCF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8072A8A1-7C05-4310-AB70-D5149652CCF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DCD2892-0F65-4E1E-A576-F1282F3C012F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DCD2892-0F65-4E1E-A576-F1282F3C012F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DCD2892-0F65-4E1E-A576-F1282F3C012F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DCD2892-0F65-4E1E-A576-F1282F3C012F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1D67F35-F0D8-4A96-952C-BD005EEC7045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1D67F35-F0D8-4A96-952C-BD005EEC7045}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1D67F35-F0D8-4A96-952C-BD005EEC7045}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1D67F35-F0D8-4A96-952C-BD005EEC7045}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2B2D183-AFD7-4B95-BD25-91702596BFB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2B2D183-AFD7-4B95-BD25-91702596BFB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2B2D183-AFD7-4B95-BD25-91702596BFB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2B2D183-AFD7-4B95-BD25-91702596BFB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CFA7816-E26F-4088-A1E6-2D3C1D37B2AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CFA7816-E26F-4088-A1E6-2D3C1D37B2AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CFA7816-E26F-4088-A1E6-2D3C1D37B2AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CFA7816-E26F-4088-A1E6-2D3C1D37B2AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5CFA7816-E26F-4088-A1E6-2D3C1D37B2AF} = {9B0CF92E-C49E-48C9-8378-46281FD2C45C}
+	EndGlobalSection
+EndGlobal
