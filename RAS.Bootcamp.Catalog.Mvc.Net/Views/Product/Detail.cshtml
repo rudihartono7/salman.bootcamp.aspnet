@@ -1,0 +1,19 @@
+@model RAS.Bootcamp.Catalog.Mvc.Net.Datas.Entities.Barang;
+
+<div class="row">
+		<div class="col-md-8">
+			<img alt="Bootstrap Image Preview" src="@Model.Url" />
+			<dl>
+                @Model.Description	
+			</dl>
+		</div>
+		<div class="col-md-4">
+            <form asp-action="AddToCart" asp-controller="Cart" method="post">
+                <input type="hidden" name="idBarang" value="@Model.Id" />
+                <input type="hidden" name="qty" value="1" />
+                <button type="submit" class="btn btn-success">
+                    AddToCart
+                </button>
+            </form>
+		</div>
+	</div>

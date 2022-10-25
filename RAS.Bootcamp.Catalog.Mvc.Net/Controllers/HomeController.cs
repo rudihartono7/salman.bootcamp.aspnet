@@ -22,6 +22,11 @@ public class HomeController : Controller
         return View(barang);
     }
 
+    public IActionResult Forbidden()
+    {
+        return View();
+    }
+
     public IActionResult Privacy()
     {
         return View();
