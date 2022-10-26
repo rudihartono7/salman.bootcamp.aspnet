@@ -49,3 +49,15 @@ apply migration ke database dengan perintah
 `dotnet ef database update`
 
 more information about ef code first: https://www.entityframeworktutorial.net/efcore/cli-commands-for-ef-core-migration.aspx
+
+1. Create dockerfile
+2. run command for build image docker 
+`docker build . -t {image_name}:{tagging}`
+`docker image build . -t rasbootcampmvc:1.0`
+
+3. docker image tag {local_image_path or name} docker.io/{nama}/{name and tag}
+
+` docker image tag rasbootcampmvc:1.0 docker.io/rudihartono/rasbootcampmvc:1.0`
+
+4. docker image push docker.io/{nama}/{name and tag}
+`docker image push  docker.io/rudihartono/rasbootcampmvc:1.0`
