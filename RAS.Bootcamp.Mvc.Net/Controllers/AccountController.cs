@@ -49,6 +49,7 @@ public class AccountController : Controller
         //Set Authorization data to cookies
         var claims = new List<Claim>
         {
+            new Claim("id", user.Id.ToString()),
             new Claim(ClaimTypes.Name, user.Username),
             new Claim("FullName", user.Username),
             new Claim(ClaimTypes.Role, user.Tipe),

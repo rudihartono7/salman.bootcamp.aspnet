@@ -1,0 +1,56 @@
+﻿@model List<RAS.Bootcamp.Catalog.Mvc.Net.Datas.Entities.Keranjang>;
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <table>
+            <thead>
+            <tr>
+                <td>
+                    No
+                </td>
+                <td>
+                    Nama Barang
+                </td>
+                <td>
+                    Nama Toko
+                </td>
+                <td>
+                    Jumlah
+                </td>
+                <td>
+                    Harga
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+            @{
+                int i = 1;
+            }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@i++</td>
+                    <td>@item.IdBarangNavigation.Nama</td>
+                    <td>@item.IdBarangNavigation.IdPenjualNavigation.NamaToko</td>
+                    <td>@item.Jumlah</td>
+                    <td>@(item.Jumlah * item.HargaSatuan) </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Order" asp-controller="Checkout" method="post">
+            <button type="submit" class="btn btn-danger">
+                Order
+            </button>
+        </form>
+    </div>
+</div>
