@@ -6,7 +6,7 @@ using RAS.Bootcamp.Mvc.Net.Models.Entities;
 
 namespace RAS.Bootcamp.Mvc.Net.Controllers;
 
-[Authorize(Roles = "PENJUAL")]
+[Authorize(Roles = Constant.PENJUAL)]
 public class ProductController : Controller
 {
     private readonly ILogger<ProductController> _logger;
@@ -25,37 +25,38 @@ public class ProductController : Controller
     {
         //TODO
         List<Barang> barangs = _dbContext.Barangs.ToList();
-            
+
         return View(barangs);
     }
 
     [Authorize(Roles = "PENJUAL")]
     [HttpGet]
     public IActionResult Create()
-    {   
+    {
         return View();
     }
 
     [HttpPost]
     public IActionResult Create(BarangRequest newBarang)
     {
-        
         var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
 
-        if(!Directory.Exists(uploadFolder))
+        if (!Directory.Exists(uploadFolder))
             Directory.CreateDirectory(uploadFolder);
 
         var filename = $"{newBarang.Kode}-{newBarang.FileImage.FileName}";
-        var filePath = Path.Combine(uploadFolder,filename);
-        
+        var filePath = Path.Combine(uploadFolder, filename);
+
         using var stream = System.IO.File.Create(filePath);
-        if(newBarang.FileImage != null)
+        if (newBarang.FileImage != null)
         {
             newBarang.FileImage.CopyTo(stream);
         }
 
-        var Url = $"{Request.Scheme}://{Request.Host}{Request.PathBase}/images/{filename}"; 
-
+        var Url = $"{Request.Scheme}://{Request.Host}{Request.PathBase}/images/{filename}";
+        var userid = User.Claims.First(e => e.Type == "id").Value;
+        var id = int.Parse(userid);
+        var penjualid = _dbContext.Penjuals.First(e => e.IdUser == id);
         _dbContext.Barangs.Add(new Barang
         {
             Kode = newBarang.Kode,
@@ -63,15 +64,15 @@ public class ProductController : Controller
             Harga = newBarang.Harga,
             Description = newBarang.Description,
             Filename = filename,
-            Url = Url
+            Url = Url,
+            IdPenjual = penjualid.Id
         });
 
-
-
+        _dbContext.SaveChanges();
 
         return View();
-
     }
+
     public IActionResult Privacy()
     {
         return View();

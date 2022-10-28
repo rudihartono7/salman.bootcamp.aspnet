@@ -2,37 +2,32 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
-using RAS.Bootcamp.Mvc.Net.Models;
+using RAS.Bootcamp.Catalog.Mvc.Net.Datas;
+using RAS.Bootcamp.Catalog.Mvc.Net.Datas.Entities;
+using RAS.Bootcamp.Catalog.Mvc.Net.Models;
 
-namespace RAS.Bootcamp.Mvc.Net.Controllers;
-
-public class AccountController : Controller
-{
+namespace RAS.Bootcamp.Catalog.Mvc.Net.Controllers;
+public class AccountController : Controller {
     private readonly ILogger<AccountController> _logger;
-    private readonly AppDbContext _dbContext;
-
-    public AccountController(ILogger<AccountController> logger, AppDbContext dbContext)
+    private readonly EMarketDbContext _dbContext;
+    public AccountController(ILogger<AccountController> logger, EMarketDbContext dbContext)
     {
         _logger = logger;
         _dbContext = dbContext;
     }
 
-    public IActionResult Login()
-    {
+    public IActionResult Login() {
         return View(new LoginRequest());
     }
 
     [HttpPost]
-    public async Task<IActionResult> Login(LoginRequest request)
-    {
-
-
+    public async Task<IActionResult> Login(LoginRequest request) {
         if(!ModelState.IsValid){
             return View(request);
         }
 
         var user = _dbContext.Users
-        .FirstOrDefault(x=>x.Username == request.Username && x.Password == request.Password);
+        .FirstOrDefault(x=>x.Username == request.Username && x.Password == request.Password && x.Tipe == "PEMBELI");
 
         if(user == null){
             ViewBag.ErrorMessage = "Invalid username or password";
@@ -40,16 +35,10 @@ public class AccountController : Controller
             return View(request);
         }
 
-        if(user.Tipe == "PEMBELI"){
-            ViewBag.ErrorMessage = "You'r not admin or seller";
-
-            return View(request);
-        }
-
         //Set Authorization data to cookies
         var claims = new List<Claim>
         {
-            new Claim("id", user.Id.ToString()),
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             new Claim(ClaimTypes.Name, user.Username),
             new Claim("FullName", user.Username),
             new Claim(ClaimTypes.Role, user.Tipe),
@@ -71,9 +60,9 @@ public class AccountController : Controller
     }
 
     public async Task<IActionResult> Logout(){
-        
         await HttpContext.SignOutAsync();
-        return RedirectToAction("Login");
+
+        return RedirectToAction("Index", "Home");
     }
 
     public IActionResult Register(){
@@ -87,21 +76,21 @@ public class AccountController : Controller
             return View(request);
         }
 
-        var newUser = new Models.Entities.User{
+        var newUser = new User{
             Username = request.Username,
             Password = request.Password,
-            Tipe = request.Tipe
+            Tipe = "PEMBELI"
         };
 
-        var penjual = new Models.Entities.Penjual{
-            IdUser = newUser.Id,
+        var pembeli = new Pembely{
             Alamat = request.Alamat,
-            NamaToko = $"TK {request.FullName}",
-            User = newUser
+            IdUser = newUser.Id,
+            IdUserNavigation = newUser,
+            NoHp = "62"
         };
 
         _dbContext.Users.Add(newUser);
-        _dbContext.Penjuals.Add(penjual);
+        _dbContext.Pembelies.Add(pembeli);
         
         _dbContext.SaveChanges();
 

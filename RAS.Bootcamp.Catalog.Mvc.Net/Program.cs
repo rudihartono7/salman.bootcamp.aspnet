@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using RAS.Bootcamp.Catalog.Mvc.Net.Datas;
 
@@ -9,7 +10,19 @@ builder.Services.AddDbContext<EMarketDbContext>(options =>{
 });
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+        options.SlidingExpiration = true;
+        options.LoginPath = "/Account/Login";
+        options.LogoutPath = "/Account/Logout";
+        options.AccessDeniedPath = "/Home/Forbidden";
+    });
+
+builder.Services.AddControllersWithViews()
+.AddRazorRuntimeCompilation();
 
 var app = builder.Build();
 
@@ -26,6 +39,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
