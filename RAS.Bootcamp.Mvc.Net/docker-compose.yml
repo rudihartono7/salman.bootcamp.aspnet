@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  rasbootcamp-cms:
+    image: docker.io/rudihartono/rasbootcampmvc:1.0
+    container_name: rasbootcamp-cms-systemd
+    environment:
+      - TZ=Asia/Jakarta
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages
+      - ConnectionStrings__DefaultConnection=Server=rasemarket.postgres.database.azure.com;Database=EMarketDB;Port=5432;User Id=rasbootcamp@rasemarket;Password=PoIQ098@!;
+    ports:
+      - "5000:80"
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+    tty: true

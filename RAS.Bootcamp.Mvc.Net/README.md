@@ -61,3 +61,13 @@ more information about ef code first: https://www.entityframeworktutorial.net/ef
 
 4. docker image push docker.io/{nama}/{name and tag}
 `docker image push  docker.io/rudihartono/rasbootcampmvc:1.0`
+
+
+Deployment AspNet Core 6
+1. OS 
+Terminal -> aplikasi aspnet core base nya console app using kestrel
+2. Application Server -> aplikasi yang digunakan untuk menjalankan web
+ - IIS
+ - NGINX
+ - APACHE
+3. Docker
